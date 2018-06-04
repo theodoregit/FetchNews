@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+        #top{
+            border-style: solid;
+            padding: 2%;
+        }
+        #middle{
+            border-style: solid;
+            padding: 13%;
+        }
+        #bottom{
+            border-style: solid;
+            padding: 0.2%;
+            margin-top: 10px;
+        }
+        #main-component{
+            list-style-type: none;
+        }
+        #texts{
+            border-style: solid;
+            padding-left: 100px;
+            padding-top: 70px;
+            padding-right: 600px;
+            padding-bottom: 150px;
+            margin-left: -20%;
+            margin-top: -170px;
+            float: left;
+            
+        }
+        #images{
+            border-style: solid;
+            padding-bottom: 320px;
+            padding-left: 250px;
+            padding-right: 170px;
+            margin-right: -15%;
+            margin-top: -170px;
+            float: right;
+            
+
+        }
+        #header-div{
+            /* border-style: solid; */
+            margin-top: -40%;
+        }
+        #news-div{
+            /* position: relative; */
+        }
+    </style>
+    <head>
+        <title>HeadLines.com</title>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        
+        <div id="top">
+            <h1>Top</h1>
+        </div>
+        <div id="middle">
+            <ul id="main-component">
+                <li>
+                    <div id="texts">
+                        <h2 id="heading"></h2> 
+                        <p id="content"></p>               
+                    </div>                    
+                </li>
+                <li>
+                    <div  id="images">
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <h1>Bottom</h1>
+        </div>
+        
+        <script src="../jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $.get('/getnews/head').done(function(data, status){
+                    // alert(data + status);
+                    $("#heading").text(data);
+                });
+
+                $.get('/getnews/main').done(function(data, status){
+                    $("#content").text(data);
+                });
+            });
+        </script>
+    </body>    
+</html>
